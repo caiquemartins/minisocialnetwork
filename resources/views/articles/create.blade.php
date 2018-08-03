@@ -9,6 +9,7 @@
                 <div class="card-body">
                     <form action="/articles" method="POST">
                         {{ csrf_field() }}
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="form-group" >
                             <label for="content">Content</label>
                             <textarea name="content" id="content" class="form-control"></textarea>
