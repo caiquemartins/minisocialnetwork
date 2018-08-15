@@ -14,7 +14,9 @@
                     <div class="card-header">Nome do Usuário <span class="float-right">{{$article->created_at->diffForHumans()}}</span></div>
 
                     <div class="card-body">
-                        <p>{{$article->content}}</p>
+                        <p>{{ $article->shortContent }}</p>
+
+                        <a href="/articles/{{$article->id}}">Read More'</a>
                         
                     </div>
                     <div class="card-footer text-muted bg-transparent" >
