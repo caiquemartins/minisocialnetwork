@@ -20,6 +20,17 @@
                         
                     </div>
                     <div class="card-footer text-muted bg-transparent" >
+                        @if($article->user_id == Auth::id())
+
+                            <form method="POST" action="/articles/{{$article->id}}" class="pull-right">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+
+                        @endif
+
+
                         <i class="fa fa-heart pull-right"></i>
                     </div>
                 </div>

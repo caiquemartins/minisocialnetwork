@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     
-                    <span>Article by NOME_USUARIO</span>
+                    <span>Article by NOME_USUARIO <a href="/articles/{{$article->id}}/edit">Edit</a></span>
 
                     <span class="pull-right">
                         {{$article->created_at->diffForHumans()}}

@@ -39,6 +39,8 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
         Article::create($request->all());
+
+        return redirect('/articles');
     }
 
     /**
@@ -62,7 +64,10 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        //
+       
+        $article = Article::findOrFail($id);
+
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -74,7 +79,14 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::findOrFail($id);
+        
+        if(!isset($request->live))
+            $article->update(array_merge($request->all(), ['live' => false]));
+        else
+            $article->update($request->all());
+
+        return redirect("/articles/{$id}/edit");
     }
 
     /**
@@ -85,6 +97,11 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        $article->delete();
+        //Article::destroy($id);
+
+       return redirect('/articles');
+
     }
 }
